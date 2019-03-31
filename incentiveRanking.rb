@@ -17,7 +17,19 @@
 1.upto 3 do |t|
   puts "例#{t}の答え"
   File.open("data00#{t}.txt", "r"){ |f|
-    # ここにプログラムを記述してください。
+    n = f.gets.to_i
+    members = f.gets.split
+    results = {}
+    
+    n.times do |i|
+      results[members[i]] = 0
+    end
+    m = f.gets.to_i
+    m.times do |i|
+      cost = f.gets.split
+      results[cost[0]] += cost[1].to_i
+    end
+    p results.sort_by{ | k, v | v }.reverse.to_h
   }
 end
 
